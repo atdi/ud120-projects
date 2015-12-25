@@ -48,6 +48,7 @@ data_dict.pop("TOTAL", 0)
 ### can be any key in the person-level dictionary (salary, director_fees, etc.) 
 feature_1 = "salary"
 feature_2 = "exercised_stock_options"
+feature_3 = "total_payments"
 poi  = "poi"
 features_list = [poi, feature_1, feature_2]
 data = featureFormat(data_dict, features_list )
@@ -64,8 +65,18 @@ plt.show()
 
 ### cluster here; create predictions of the cluster labels
 ### for the data and store them to a list called pred
+from sklearn.cluster import KMeans
 
+finance_features.sort(key=lambda li: li[0])
+for item in finance_features:
+    if item[0] > 0:
+        print("Minimum is: " + str(item[0]))
+        break
 
+print("Maximum is " + str(finance_features[len(finance_features) - 1][0]))
+cluster = KMeans(n_clusters=2)
+cluster.fit(finance_features)
+pred = cluster.predict(finance_features)
 
 
 ### rename the "name" parameter when you change the number of features
