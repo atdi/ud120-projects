@@ -67,13 +67,14 @@ plt.show()
 ### for the data and store them to a list called pred
 from sklearn.cluster import KMeans
 
-finance_features.sort(key=lambda li: li[0])
-for item in finance_features:
-    if item[0] > 0:
-        print("Minimum is: " + str(item[0]))
-        break
+#finance_features.sort(key=lambda li: li[0])
+#for item in finance_features:
+#    if item[0] > 0:
+#        print("Minimum is: " + str(item[0]))
+#        break
 
-print("Maximum is " + str(finance_features[len(finance_features) - 1][0]))
+#print("Maximum is " + str(finance_features[len(finance_features) - 1][0]))
+
 cluster = KMeans(n_clusters=2)
 cluster.fit(finance_features)
 pred = cluster.predict(finance_features)
