@@ -40,4 +40,20 @@ labels_train   = labels_train[:150]
 ### your code goes here
 
 
+from sklearn.tree.tree import DecisionTreeClassifier
+
+vocab_list = vectorizer.get_feature_names()
+
+
+dtc = DecisionTreeClassifier()
+dtc.fit(features_train, labels_train)
+pred = dtc.predict(features_test)
+from sklearn.metrics import accuracy_score
+accuracy = accuracy_score(labels_test, pred)
+print(accuracy)
+feature_importances = dtc.feature_importances_
+for i in range(0, len(feature_importances)):
+    if feature_importances[i] > 0.2:
+        print("Importance = ", feature_importances[i], " number is ", i, " word is ", vocab_list[i])
+
 

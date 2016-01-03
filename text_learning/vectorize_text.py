@@ -51,7 +51,12 @@ for name, from_person in [("sara", from_sara), ("chris", from_chris)]:
         text = parseOutText(email)
         ### use str.replace() to remove any instances of the words
         ### ["sara", "shackleton", "chris", "germani"]
-        text = text.replace("sara", "").replace("shackleton", "").replace("chris", "").replace("germani", "")
+        text = text.replace("sara", "")\
+            .replace("shackleton", "")\
+            .replace("chris", "")\
+            .replace("germani", "")\
+            .replace("sshacklensf", "")\
+            .replace("cgermannsf", "")
         ### append the text to word_data
         word_data.append(text)
         ### append a 0 to from_data if email is from Sara, and 1 if email is from Chris
